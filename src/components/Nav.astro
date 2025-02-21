@@ -1,0 +1,51 @@
+<nav class="nav-header">
+  <a href="#home" class="nav-link">Home</a>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#work" class="nav-link">Work</a>
+  <a href="#contact" class="nav-link">Contact</a>
+</nav>
+
+<style>
+  .nav-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+    transition: top 0.3s;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: #007bff;
+  }
+
+  @media (max-width: 768px) {
+    .nav-header {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  let lastScrollTop = 0;
+  window.addEventListener("scroll", function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (currentScroll > lastScrollTop) {
+      document.querySelector(".nav-header").style.top = "-60px";
+    } else {
+      document.querySelector(".nav-header").style.top = "0";
+    }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For mobile or negative scrolling
+  }, false);
+</script>
